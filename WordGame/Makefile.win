@@ -1,0 +1,45 @@
+# Project: WrodGame
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe -D__DEBUG__
+CC       = gcc.exe -D__DEBUG__
+WINDRES  = windres.exe
+RES      = WrodGame_private.res
+OBJ      = main.o lib/filehandler.o lib/gui_menu_tool.o lib/richtext.o lib/inputcheck.o $(RES)
+LINKOBJ  = main.o lib/filehandler.o lib/gui_menu_tool.o lib/richtext.o lib/inputcheck.o $(RES)
+LIBS     = -L"D:/Programs_/Dev-Cpp/MinGW64/lib" -L"D:/Programs_/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc -g3
+INCS     = -I"D:/Programs_/Dev-Cpp/MinGW64/include" -I"D:/Programs_/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Programs_/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Users/admin/Desktop/作业/高级程序语言设计/WordGame_v2.0/lib"
+CXXINCS  = -I"D:/Programs_/Dev-Cpp/MinGW64/include" -I"D:/Programs_/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Programs_/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"D:/Programs_/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++" -I"C:/Users/admin/Desktop/作业/高级程序语言设计/WordGame_v2.0/lib"
+BIN      = WrodGame.exe
+CXXFLAGS = $(CXXINCS) -g3
+CFLAGS   = $(INCS) -g3
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+main.o: main.c
+	$(CC) -c main.c -o main.o $(CFLAGS)
+
+lib/filehandler.o: lib/filehandler.c
+	$(CC) -c lib/filehandler.c -o lib/filehandler.o $(CFLAGS)
+
+lib/gui_menu_tool.o: lib/gui_menu_tool.c
+	$(CC) -c lib/gui_menu_tool.c -o lib/gui_menu_tool.o $(CFLAGS)
+
+lib/richtext.o: lib/richtext.c
+	$(CC) -c lib/richtext.c -o lib/richtext.o $(CFLAGS)
+
+lib/inputcheck.o: lib/inputcheck.c
+	$(CC) -c lib/inputcheck.c -o lib/inputcheck.o $(CFLAGS)
+
+WrodGame_private.res: WrodGame_private.rc 
+	$(WINDRES) -i WrodGame_private.rc --input-format=rc -o WrodGame_private.res -O coff 
+

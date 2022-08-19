@@ -1,0 +1,7 @@
+ATM Menu
+1.Check the balance
+2.Withdraw the balance
+3.Deposit balance
+4.Transfer accounts
+5.Account details
+6.Exit the system

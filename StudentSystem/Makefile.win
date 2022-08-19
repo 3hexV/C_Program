@@ -1,0 +1,51 @@
+# Project: StudentSystem
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+RES      = StudentSystem_private.res
+OBJ      = main.o lib/filehandler.o lib/gui_menu_tool.o lib/inputcheck.o lib/richtext.o lib/nodelist.o lib/passwd.o $(RES)
+LINKOBJ  = main.o lib/filehandler.o lib/gui_menu_tool.o lib/inputcheck.o lib/richtext.o lib/nodelist.o lib/passwd.o $(RES)
+LIBS     = -L"D:/Programs_/Dev-Cpp/MinGW64/lib" -L"D:/Programs_/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc
+INCS     = -I"D:/Programs_/Dev-Cpp/MinGW64/include" -I"D:/Programs_/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Programs_/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Users/admin/Desktop/作业/高级程序语言设计/111/StudentSystem_v2.0/lib"
+CXXINCS  = -I"D:/Programs_/Dev-Cpp/MinGW64/include" -I"D:/Programs_/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Programs_/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"D:/Programs_/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++" -I"C:/Users/admin/Desktop/作业/高级程序语言设计/111/StudentSystem_v2.0/lib"
+BIN      = StudentSystem.exe
+CXXFLAGS = $(CXXINCS) 
+CFLAGS   = $(INCS) 
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+main.o: main.c
+	$(CC) -c main.c -o main.o $(CFLAGS)
+
+lib/filehandler.o: lib/filehandler.c
+	$(CC) -c lib/filehandler.c -o lib/filehandler.o $(CFLAGS)
+
+lib/gui_menu_tool.o: lib/gui_menu_tool.c
+	$(CC) -c lib/gui_menu_tool.c -o lib/gui_menu_tool.o $(CFLAGS)
+
+lib/inputcheck.o: lib/inputcheck.c
+	$(CC) -c lib/inputcheck.c -o lib/inputcheck.o $(CFLAGS)
+
+lib/richtext.o: lib/richtext.c
+	$(CC) -c lib/richtext.c -o lib/richtext.o $(CFLAGS)
+
+lib/nodelist.o: lib/nodelist.c
+	$(CC) -c lib/nodelist.c -o lib/nodelist.o $(CFLAGS)
+
+lib/passwd.o: lib/passwd.c
+	$(CC) -c lib/passwd.c -o lib/passwd.o $(CFLAGS)
+
+StudentSystem_private.res: StudentSystem_private.rc 
+	$(WINDRES) -i StudentSystem_private.rc --input-format=rc -o StudentSystem_private.res -O coff 
+

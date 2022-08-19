@@ -1,0 +1,31 @@
+# Project: tetris
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = main.o lib/gui_menu_tool.o
+LINKOBJ  = main.o lib/gui_menu_tool.o
+LIBS     = -L"D:/Programs_/Dev-Cpp/MinGW64/lib" -L"D:/Programs_/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc
+INCS     = -I"D:/Programs_/Dev-Cpp/MinGW64/include" -I"D:/Programs_/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Programs_/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Users/admin/Desktop/作业/高级程序语言设计/tetris/lib" -I"C:/Users/admin/Desktop/作业/高级程序语言设计/tetris"
+CXXINCS  = -I"D:/Programs_/Dev-Cpp/MinGW64/include" -I"D:/Programs_/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Programs_/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"D:/Programs_/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++" -I"C:/Users/admin/Desktop/作业/高级程序语言设计/tetris/lib" -I"C:/Users/admin/Desktop/作业/高级程序语言设计/tetris"
+BIN      = tetris.exe
+CXXFLAGS = $(CXXINCS) 
+CFLAGS   = $(INCS) 
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+main.o: main.c
+	$(CC) -c main.c -o main.o $(CFLAGS)
+
+lib/gui_menu_tool.o: lib/gui_menu_tool.c
+	$(CC) -c lib/gui_menu_tool.c -o lib/gui_menu_tool.o $(CFLAGS)

@@ -1,0 +1,49 @@
+# Project: TelNotebook
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = main.o lib/file_handler.o lib/gui_menu_tool.o lib/inputcheck.o lib/node_list.o lib/passwd.o lib/rand_data.o lib/richtext.o
+LINKOBJ  = main.o lib/file_handler.o lib/gui_menu_tool.o lib/inputcheck.o lib/node_list.o lib/passwd.o lib/rand_data.o lib/richtext.o
+LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc
+INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"D:/11/workspace/TelNotebook/lib"
+CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++" -I"D:/11/workspace/TelNotebook/lib"
+BIN      = TelNotebook.exe
+CXXFLAGS = $(CXXINCS) 
+CFLAGS   = $(INCS) 
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+main.o: main.c
+	$(CC) -c main.c -o main.o $(CFLAGS)
+
+lib/file_handler.o: lib/file_handler.c
+	$(CC) -c lib/file_handler.c -o lib/file_handler.o $(CFLAGS)
+
+lib/gui_menu_tool.o: lib/gui_menu_tool.c
+	$(CC) -c lib/gui_menu_tool.c -o lib/gui_menu_tool.o $(CFLAGS)
+
+lib/inputcheck.o: lib/inputcheck.c
+	$(CC) -c lib/inputcheck.c -o lib/inputcheck.o $(CFLAGS)
+
+lib/node_list.o: lib/node_list.c
+	$(CC) -c lib/node_list.c -o lib/node_list.o $(CFLAGS)
+
+lib/passwd.o: lib/passwd.c
+	$(CC) -c lib/passwd.c -o lib/passwd.o $(CFLAGS)
+
+lib/rand_data.o: lib/rand_data.c
+	$(CC) -c lib/rand_data.c -o lib/rand_data.o $(CFLAGS)
+
+lib/richtext.o: lib/richtext.c
+	$(CC) -c lib/richtext.c -o lib/richtext.o $(CFLAGS)
